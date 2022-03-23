@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>example2</h1>
+    <div id="app"></div>
+
+    <script>
+        /* 
+        앞서 작성한 코드를 class 문법으로 추상화하기
+        컴포넌트 클래스를 작성하니 조금 더 유연하졌다.
+        컴포넌트 코드의 사용방법을 강제할 수 있기 때문에 코드를 유지보수하고 관리할 때 매우 이롭다
+        */
+
+        class Component {
+            $target;
+            $state;
+            constructor($target) {
+                this.$target = $target;
+                this.setup();
+                this.render();
+            }
+            setup() {};
+            template() {return '';}
+            render() {
+                this.$target.innerHTML = this.template();
+                this.setEvent();
+            }
+            setEvent() {}
+            setState(newState) {
+                this.$state = { ...this.$state, ...newState};
+                this.render();
+            }
+        }
+
+        class App extends Component {
+            setup() { // 초기화
+                this.$state = {items: ['item1', 'item2']}
+            }
+            template() { // DOM 조작
+                const {items} = this.$state;
+                return `
+                <ul>
+                    ${items.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+                <button>추가</button>
+                `
+            }
+
+            setEvent() { // 이벤트 발생
+                this.$target.querySelector('button').addEventListener('click', () => {
+                    const {items} = this.$state;
+                    this.setState({ items: [...items, `item${items.length + 1}`]})
+                });
+            }
+        }
+
+        new App(document.querySelector('#app'));
+
+    </script>
+</body>
+
+</html>
