@@ -21,34 +21,15 @@ export default class Items extends Component {
     }
 
     setEvent() {
-
-        // 이벤트 버블링을 사용한 방식(?)
-        this.$target.addEventListener('click', ({ target }) => {
-            const items = [...this.$state.items];
-
-            if (target.classList.contains('addBtn')) {
-                this.setState({ items: [...items, `item${items.length + 1}`]});
-            }
-
-            if (target.classList.contains('deleteBtn')) {
-                items.splice(target.dataset.index, 1);
-                this.setState({items});
-            }
+        this.addEvent('click', '.addBtn', ({target}) => {
+            const {items} = this.$state;
+            this.setState({items: [...items, `item${items.length + 1}`]});
         });
-
-        
-        // this.$target.querySelector('.addBtn').addEventListener('click', () => {
-        //     const {items} = this.$state;
-        //     this.setState({ items: [...items, `item${items.length + 1}`] });
-        // });
-
-        // this.$target.querySelectorAll('.deleteBtn').forEach(deleteBtn => 
-        //     deleteBtn.addEventListener('click', ({ target }) => {
-        //         const items = [...this.$state.items];
-        //         items.splice(target.dataset.index, 1);
-        //         this.setState({ items });
-        // }));
-
+        this.addEvent('click', '.deleteBtn', ({target}) => {
+            const items = [...this.$state.items];
+            items.splice(target.dataset.index, 1);
+            this.setState({items});
+        });
         
     }
 }
