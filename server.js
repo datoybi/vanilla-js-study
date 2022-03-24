@@ -17,13 +17,6 @@ const mimeLookup = {
 
 const server = http.createServer((req, res) => {
   if(req.method == 'GET'){
-
-    // let fileurl;
-    // if(req.url == '/'){
-    //   fileurl = 'index.html';
-    // } else {
-    //   fileurl = req.url;
-    // }
     let filepath = path.resolve('./' + req.url);
     let fileExt = path.extname(filepath);
     let mimeType = mimeLookup[fileExt];
