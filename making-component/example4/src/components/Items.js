@@ -1,4 +1,10 @@
 import Component from "../core/component.js";
+/*
+    items 컴포넌트가 많은 일을 하게 되었다. 이럴 경우 코드를 관리하기 힘들고,
+    컴포넌트단위로 활용할 수 없게 되었다.
+    기본적으로 컴포넌트라는 것은 "재활용"이 목적이다. 
+    그러기 위해서는 하나의 컴포넌트가 최대한 작은 단위의 일을 하도록 만들어야 한다 
+*/
 
 export default class Items extends Component {
     get filteredItems() {
@@ -27,7 +33,6 @@ export default class Items extends Component {
     }
 
     template() {
-        const {items} = this.$state;
         return `
         <header>
             <input type="text" class="appender" placeholder="아이템 내용 입력" />
@@ -72,7 +77,7 @@ export default class Items extends Component {
             const {items} = this.$state;
             this.setState({items: [...items, `item${items.length + 1}`]});
         });
-        
+
         this.addEvent('click', '.deleteBtn', ({target}) => {
             const items = [...this.$state.items];
             items.splice(target.dataset.index, 1);
