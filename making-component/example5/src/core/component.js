@@ -19,7 +19,7 @@ export default class Component {
     setEvent(){}
     setState(newState){
         this.$state = {...this.$state, ...newState};
-        console.log('setState : ' + JSON.stringify(this.$state));
+        // console.log('setState : ' + JSON.stringify(this.$state));
         this.render();
     }
     // 이벤트 버블링을 통한 등록 과정을 메소드로 만들어서 사용
