@@ -101,3 +101,40 @@ var idList = idCreater(list);
 console.log(idList[0].id); // 100
 
 
+/*
+
+// 클로저란 다른 함수의 스코프에 있는 변수에 접근 가능한 함수
+
+// 클로저의 문제점 : 클로저는 항상 외부 함수의 변수에 마지막으로 저장된 값만 알 수 있다.(클로저가 특정 변수가 아니라 전체 변수 객체에 대한 참조를 저장함을 기억하기)
+function a() {
+  let result = new Array();
+  
+  for(let i=0; i<10; i++){
+    result[i] = function() {
+      return i;
+    };
+  }
+  return result;
+}
+
+const aa = a()
+console.log(aa)
+
+// 익명함수 사용
+function b() {
+  let result = new Array();
+  
+  for(let i=0; i<10; i++){
+    result[i] = function(num) { 
+      return function() {
+        return num;
+      };
+    }(i);
+  }
+  return result;
+}
+
+const bb = b();
+console.log(bb);
+
+ */
