@@ -27,14 +27,14 @@ function a() {
 a();
 
 */
-// function a() {
-//     console.log(b);
-//     var b = 'bbb';
-//     console.log(b);
-//     function b() {};
-//     console.log(b)
-// }
-// a();
+function a() {
+    console.log(b);
+    var b = 'bbb';
+    console.log(b);
+    function b() {};
+    console.log(b)
+}
+a();
 /*
 결과값
 f b()
@@ -42,13 +42,13 @@ bbb
 bbb
 */
 
-// function a() {
-//     console.log(b);
-//     var b = 'bbb';
-//     console.log(b);
-//     var b = function() {}; // b에 익명함수를 할당
-//     console.log(b)
-// }
+function a() {
+    console.log(b);
+    var b = 'bbb';
+    console.log(b);
+    var b = function() {}; // b에 익명함수를 할당
+    console.log(b)
+}
 
 // a();
 /*
