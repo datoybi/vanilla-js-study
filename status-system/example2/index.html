@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="./example1.js"></script> -->
+    <!-- <script src="./subscriber.js"></script>
+    <script src="./publish.js"></script>
+    <script src="./state.js"></script> -->
+    
+    
+
+    <title>Document</title>
+</head>
+<body>
+    <h3>개발자도구 확인</h1>
+    <script>
+        /*
+        Object.defineProperty 
+        객체에 직접 새로운 속성을 정의하거나 이미 존재하는 속성을 수정한 후, 그 객체를 반환합니다.
+
+        Object.defineProperty(object, prop, descriptor)
+        object : 속성을 정의할 객체
+        prop : 새로 정의하거나 수정하려는 속성의 이름 또는 Symbol
+        descriptor : 새로 정의하거나 수정하려는 속성을 기술하는 객체
+        
+    
+        let a = 10;
+        const state = {};
+        Object.defineProperty(state, 'a', {
+            get() {
+                console.log(`현재 a의 값은 ${a} 입니다.`);
+                return a;
+            },
+            set(value) {
+                a = value;
+                console.log(`변경된 a의 값은 ${a} 입니다.`)
+            }
+        });
+
+        console.log(`state.a = ${state.a}`)
+        state.a = 100;
+
+        // 현재 a의 값은 10 입니다.
+        // state.a = 10
+        // 변경된 a의 값은 100 입니다.
+*/
+        // 여러개의 속성 관리하기
+        const state = {
+            a : 10,
+            b : 20
+        };
+        const stateKeys = Object.keys(state);
+        
+        for(const key of stateKeys){
+            let _value = state[key];
+            Object.defineProperty(state, key, {
+                get() {
+                    console.log(`현재 state.${key}의 값은 ${_value} 입니다.`);
+                    return _value;
+                },
+                set(value) {
+                    _value = value;
+                    console.log(`변경된 state.${key}의 값은 ${_value} 입니다.`);
+                }
+            })
+        }
+        console.log(`a + b = ${state.a + state.b}`);
+        state.a = 100;
+        state.b = 200;
+
+        // 현재 state.a의 값은 10 입니다.
+        // 현재 state.b의 값은 20 입니다.
+        // a + b = 30
+        // 변경된 state.a의 값은 100 입니다.
+        // 변경된 state.b의 값은 200 입니다.
+
+    </script>
+</body>
+</html>

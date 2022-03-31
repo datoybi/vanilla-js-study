@@ -101,7 +101,7 @@ var idList = idCreater(list);
 console.log(idList[0].id); // 100
 
 
-/*
+
 
 // 클로저란 다른 함수의 스코프에 있는 변수에 접근 가능한 함수
 
@@ -137,4 +137,4 @@ function b() {
 const bb = b();
 console.log(bb);
 
- */
+ 
