@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="./example1.js"></script> -->
+    <!-- <script src="./subscriber.js"></script>
+    <script src="./publish.js"></script>
+    <script src="./state.js"></script> -->
+    <title>Document</title>
+</head>
+<body>
+    <h3>개발자도구 확인</h1>
+    <script>
+    // 함수화
+
+    let currentObserver = null;
+
+    const observe = fn => {
+        currentObserver = fn;
+        fn();
+        currentObserver = null;
+    }
+
+    const observable = obj => {
+        Object.keys(obj).forEach(key => {
+            let _value = obj[key];
+            const observers = new Set();
+
+            Object.defineProperty(obj, key, {
+                get() {
+                    if (currentObserver) observers.add(currentObserver);
+                    return _value;
+                },
+                set(value){
+                    _value = value;
+                    observers.forEach(fn => fn());
+                }
+            })
+        })
+        return obj;
+    }   
+
+    const 상태 = observable({ a: 10, b: 20 });
+    observe(() => console.log(`a = ${상태.a}`));
+    observe(() => console.log(`b = ${상태.b}`));
+    observe(() => console.log(`a + b = ${상태.a} + ${상태.b}`));
+    observe(() => console.log(`a * b = ${상태.a} * ${상태.b}`));
+    observe(() => console.log(`a - b = ${상태.a} - ${상태.b}`));
+
+    상태.a = 100;
+    상태.b = 200;
+
+    // a = 10
+    // b = 20
+    // a + b = 10 + 20
+    // a * b = 10 * 20
+    // a - b = 10 - 20
+    // a = 100
+    // a + b = 100 + 20
+    // a * b = 100 * 20
+    // a - b = 100 - 20
+    // b = 200
+    // a + b = 100 + 200
+    // a * b = 100 * 200
+    // a - b = 100 - 200
+
+
+
+
+    </script>
+</body>
+</html>

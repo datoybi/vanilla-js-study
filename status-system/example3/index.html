@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="./example1.js"></script> -->
+    <!-- <script src="./subscriber.js"></script>
+    <script src="./publish.js"></script>
+    <script src="./state.js"></script> -->
+    
+    
+
+    <title>Document</title>
+</head>
+<body>
+    <h3>개발자도구 확인</h1>
+    <script>
+        // 여러개의 Observer 관리하기
+        let currentObserver = null;
+        
+        const state = {
+            a : 10,
+            b : 20
+        };
+        
+        const stateKeys = Object.keys(state);
+        
+        for(const key of stateKeys){
+            let _value = state[key];
+            const observers = new Set();
+            Object.defineProperty(state, key, {
+                get() {
+                    if(currentObserver) observers.add(currentObserver);
+                    return _value;
+                },
+                set(value) {
+                    _value = value;
+                    observers.forEach(observer => observer());
+                }
+            })
+        }
+        const 덧셈_계산기 = () => {
+            currentObserver = 덧셈_계산기;
+            console.log(`a + b = ${state.a + state.b}`);
+        }
+
+        const 뺄셈_계산기 = () => {
+            currentObserver = 뺄셈_계산기;
+            console.log(`a - b = ${state.a - state.b}`);
+        }
+
+        뺄셈_계산기();
+        state.a = 100;
+
+        뺄셈_계산기();
+        state.b = 200;
+
+        state.a = 1;
+        state.b = 2;
+
+        // 결과값
+        // a - b = -10
+        // a - b = 80 
+        // a - b = 80
+        // a - b = -100
+        // a - b = -199
+        // a - b = -1
+        
+    </script>
+</body>
+</html>
