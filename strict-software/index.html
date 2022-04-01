@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    console.log(`'1' + 1 = ${'1' + 1}`); // 문자와 숫자가 더하기 연산을 하게 되면 숫자가 문자로 변환됨
+    console.log(`'2' * 3 = ${'2' * 3}`); // 곱하기 연산을 하게되면 반대로 문자가 숫자로 변환됨
+    console.log(`1 + '2' + 3 * 4 = ${1 + '2' + 3 * 4}`); 
+    /*
+        3 * 4 곱하기가 먼저 실행 -> 12
+        그리고나서 1 + '2' 실행 -> '12'
+        '12'+12 = '1212'
+    */
+    /*
+        컴파일러가 없으니 테스트 주도 개발(TDD)이 최선이다.
+        
+        단위 테스트(Unit Test)
+        단위(Unit) : 특정 조건에 어떻게 작동해야 할지 정의한 것. 대게 '함수'로 표현
+        준비(arrange), 실행(act), 단언(assert) 패턴을 따른다.
+
+        적색(Red), 녹색(Green), 리팩터(Refactor) 순환(파란색)
+    */
+   /*
+        자스민 
+        두가지 설치 방법
+            스탠드 얼론(standalone)(채택)
+            카르마(karma)와 함께 설치하는 방법(자동화)
+
+        테스트 러너(Test Runner)란
+            재스민, 소스, 테스트 코드를 실행하는 녀석
+            스탠드 얼론으로 설치한 자스민은 HTML 파일이 테스트 러너임
+            테스트 자동화를 하려면 테스트러너인 카르마(Karma)와 함께 사용할 수 있음
+
+        설치 실행
+        2.7.0 버전 설치 
+            https://github.com/jasmine/jasmine/releases
+
+        깃 클론하기 
+            https://github.com/jeonghwan-kim/lecture-develop-fe-with-tdd 여기 들어가서
+            CMD에 git clone https://github.com/datoybi/lecture-develop-fe-with-tdd.git
+
+        install-jasmine로 가기
+            git checkout -f install-jasmine
+            vsc열기 code .
+        
+        테스트 꾸러미(Test Suite)
+            * describe('테스트 설명', 테스트 구현 함수)
+
+        테스트 스팩(Test Spec)
+            * it('테스트 설명', 기대식을 가진 테스트 구현 함수)
+
+        기대식과 매쳐
+            * expect(결과값).toBe(기대하는 값)
+
+        스파이
+            * spyOn(감시할 객체, 감시할 메소드)
+        
+            * beforeEach : it함수 호출 직전에 실행되는 자스민 함수
+            describe(() => {
+                beforeEach(() => { // 1
+                    afterEach(() => { // 3
+                        it(() => { // 2
+            
+            중복 코드를 beforeEach로 옮기자
+
+        
+
+    모듈 패턴 : 함수로 데이터를 감추고, 모듈 API를 담고 있는 객체를 반환하는 형태
+    1. 임의 함수를 호출하여 생성하는 모듈과 ( 객체가 여러개 필요하면 )
+    2. 즉시 실행 함수(IIFE) 기반의 모듈이 있다. ( 단 하나의 객체만 필요하면 )
+
+    // 이름 공간으로 활용한다.
+    var App = App || {}
+
+    // 이름 공간에 함수를 추가한다. 의존성이 있는 God 함수를 주입한다.
+    App.Person = function(God) {
+        var name = God.makeName()
+
+        // API를 노출한다.
+        Return {
+            getName: function() {return name},
+            setName: function(newName) {name = newName}
+        }
+    }
+
+    const person = App.Person(God)
+    person.getName()
+
+    모듈 생성 원칙
+    1. 단일 책임 원칙에 따라 모듈은 한가지 역할만 한다.
+        그 역할만 집중함으로써 모듈을 더욱 튼튼하게 만든다
+        테스트하기도 쉽다
+    2. 모듈 자신이 사용할 객체가 있다면 의존성 주입 형태로 제공한다
+        또는 팩토리 주입 형태로 제공한다
+        테스트하기도 쉽다
+
+    임의 모듈 패턴으로 정했다.
+   */
+   /*
+    클릭 카운터는 카운터 데이터를 다루는 모듈이다
+    전역 공간에 있는 counter변수를 ClickCounter안에서 관리하자
+
+    첫번째 스펙
+    "ClickCounter 모듈의 getValue()는 카운터 값을 반환한다."
+    브랜치 이동 
+        git checkout --force ClickCounter-spec-1
+
+    두번째 스펙
+    "ClickCounter 모듈의 increase()는 카운터 값을 1만큼 중가한다"
+   
+   
+    dry 하다 : doit, repeat, yourself! 반복적인 코드를 작성하지 말것을 암시
+   
+    주입하자!
+        ClickCounter는 객체를 만들어 파라매터로 전달 받자
+        데이터를 출력할 돔 엘레멘트도 만들어 전달 받자
+
+        TDD 방식으로 사고하다 보면 이런식으로 필요한 모듈을 주입받아 사용하는 경험이 생김
+
+        하나의 기능 단위로 모듈을 분리할 수 있기 때문에 단일 책임 원칙을 지킬 수 있다.
+   */
+</script>
+<body>
+    
+</body>
+</html>
