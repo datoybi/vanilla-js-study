@@ -122,7 +122,48 @@
         TDD 방식으로 사고하다 보면 이런식으로 필요한 모듈을 주입받아 사용하는 경험이 생김
 
         하나의 기능 단위로 모듈을 분리할 수 있기 때문에 단일 책임 원칙을 지킬 수 있다.
-   */
+  
+    두번째 스펙 
+        "ClickCounterView 모듈의 increaseAndUpdateView()는 카운트 값을 증가하고 그 값을 출력한다"
+        git checkout --force ClickCountView-spec-2
+    
+    테스트 더블
+        단위 테스트 패턴으로, 테스트하기 곤란한 컴포넌트를 대체하여 테스트 하는 것
+        특정한 동작을 흉내만 낼 뿐이지만 테스트 하기에는 적합하다
+        더미, 스텁, 스파이, 페이크, 목
+        자스민에서는 테스트 더블을 스파이스(spies)라고 부른다
+        spyOn(), createSpy() 함수를 사용 할 수 있ㄷ.
+        여기서는 spyOn()을 사용해보자
+        spyOn(MyApp, 'foo') // MyApp에 foo라는 함수를 감시하겠다
+        특정 행동을 한 뒤 bar()
+        감시한 함수가 실행되었는지 체크한다
+        expect(Myapp.foo).toHaveBeemCalled()
+        즉 bar() 함수가 Myapp.foo()함수를 실행하는지 검증하는 코드다
+        
+        세번째 스펙 
+        "클릭 이벤트가 발생하면 increaseAndUpdateView()를 실행한다"
+        git checkout --force ClickCountView-spec-3
+        git checkout --force index.html-1
+        
+        클릭할때마다 카운터가 올라가네요~
+        그럼 감소 버튼도 추가해 주실 수 있나요?
+        그리고 한번 클릭하면 2씩 증가하는 기능이 필요할지도 몰라요
+        
+        git checkout -f ClickCounter-spec-3
+        네번째 스펙
+        "ClickCounter 모듈의 increase 함수는 대체될 수 있다"
+        git checkout -f ClickCounter-spec-4
+
+        const expected = add2(data.value)
+        counter.setCountFn(add2).count();
+        // 이부분을 눈여겨 보기
+        git checkout -f index.html-3
+
+        
+        
+        */
+
+
 </script>
 <body>
     
