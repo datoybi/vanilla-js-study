@@ -1,4 +1,4 @@
-## Vanilla Javascript 스터디 목록
+## Vanilla Javascript 스터디 리스트
 
 .<br>
 ├── etc　               // 개념 스터디<br> 
