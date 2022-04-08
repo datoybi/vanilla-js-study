@@ -16,7 +16,7 @@ class Province {
     get name() {return this._name;}
     get producers() {return this._producers.slice()}
     get totalProduction() {return this._totalProduction;}
-    set totalProduction(arg) {this._totalProduction = arg;} // 잠깐..set은 어느 시점에서 실행되지..?!
+    set totalProduction(arg) {this._totalProduction = arg;} 
     get demand() {return this._demand;}
     set demand(arg) {this._demand = parseInt(arg);}
     get price() {return this._price;}
@@ -28,6 +28,8 @@ class Province {
     }
     // 수익 계산
     get profit() {
+        // console.log(this.demandValue); // 500
+        // console.log(this.demandCost); // 270
         return this.demandValue - this.demandCost;
     }
 
