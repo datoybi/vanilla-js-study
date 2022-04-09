@@ -192,7 +192,60 @@ ui events
 이 에제에는 클릭에 반응해야 할 항목이 세개가 있다. 고전적이고 단순한 이벤트 핸들러 할당은 다음과 같다.
 */
 
-var item1 = document.getElementById("goSomewhere");
-var item2 = document.getElementById("goAnywhere");
-var item3 = document.getElementById("sayHi");
+// var item1 = document.getElementById("goSomewhere");
+// var item2 = document.getElementById("goanywhere");
+// var item3 = document.getElementById("sayHi");
+
+// item1.addEventListener("click", function(event){
+//     location.href="https://www.naver.com/";
+// }, false);
+
+// item2.addEventListener("click", function(event){
+//     document.title = "I changed the document's title";
+// }, false);
+
+// item3.addEventListener("click", function(event){
+//     console.log("hi");
+// }, false);
+
+// 이벤트 위임은 다음과 같이 DOM 트리에서 가능한 가장 높은 요소에 이벤트 핸들러를 단 하나만 할당하여 이 문제를 해결한다.
+
+var $list = document.getElementById("myLinks");
+const clickActions = {
+    goSomewhere: () => location.href = "https://www.naver.com/",
+    goanywhere: () => document.title = "I changed the document's title",
+    sayHi: () => console.log("hi"),
+}
+
+$list.addEventListener("click", e => {
+    const action = e.target.id;
+    if(action) {
+        clickActions[action]();
+    }
+});
+
+
+/*
+    이벤트 핸들링 제거 
+    1. 문서에서 삭제했지만 이벤트 핸들러는 제거하지 않은 경우
+        파괴된 요소에 할당되었던 이벤트 핸들러는 가비지 콜렉션 과정에서 제대로 회수되지 않을 수 있다.
+*/ 
+var btn = document.getElementById("myBtn2");
+btn.onclick = function() {
+    document.getElementById("myDiv").innerHTML = "processing..."; // 매우 나쁜 예
+};
+
+// 버튼을 페이지에서 제거했지만 이벤트 핸들러는 아직 연결되어 있다.
+// 다음과 같이 잔류 핸들러를 직접 제거하는 편이 최선이다.
+
+var btn = document.getElementById("myBtn2");
+btn.onclick = function() {
+    btn.onclick = null; // 잔류 핸들러 제거, 버튼을 제거하면 이벤트도 중단된다.
+    document.getElementById("myDiv").innerHTML = "processing..."; // 매우 나쁜 예
+};
+
+// 이벤트 위임이 innerHTML을 사용하는 경우 잔류 핸들러를 효과적으로 삭제할 수 있다고 하는데 그 케이스 찾아보기 ❕❕❕❕
+// onload에서 한 일은 반드시 onUnload에서 취소한다.
+
+
 
