@@ -7,6 +7,7 @@
 ├── modularization      // 모듈화 스터디 <br> 
 ├── status-system       // 상태관리 단계별 구현 <br> 
 ├── strict-software     // 견고한 소프트웨어 구현 스터디 - 인프런 (TDD, 모듈화)<br> 
+├── refactoring     // 리펙토링 책 스터디 <br> 
 └── tdd                 // TDD 스터디<br> 
 
 

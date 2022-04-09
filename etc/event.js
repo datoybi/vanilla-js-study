@@ -246,6 +246,3 @@ btn.onclick = function() {
 
 // 이벤트 위임이 innerHTML을 사용하는 경우 잔류 핸들러를 효과적으로 삭제할 수 있다고 하는데 그 케이스 찾아보기 ❕❕❕❕
 // onload에서 한 일은 반드시 onUnload에서 취소한다.
-
-
-
