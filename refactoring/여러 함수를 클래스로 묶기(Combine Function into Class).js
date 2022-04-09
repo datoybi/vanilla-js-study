@@ -51,7 +51,7 @@ class Reading {
     get baseCharge() {
         return baseRate(this.month, this.year) * this.quantity;
     }
-    get taxableCharge() {
+    get taxableCharge() {aReading7
         return Math.max(0, this.baseCharge - taxThreshold(aReading.year));
     }
 
