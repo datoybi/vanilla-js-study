@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <button id="btn-desc">-</button>
+        <span id="counter-display"></span>        
+        <button id="btn-inc">+</button>
+
+        <script src="ClickCounter.js"></script>
+        <script src="ClickCountView.js"></script>
+
+        <script>
+            (() => {
+                const data = { value : 0 }
+                const counterDesc = App.ClickCounter(data).setCountFn(v => v - 1)
+                const counterInc = App.ClickCounter(data)
+            
+                const updateEl = document.querySelector("#counter-display");
+                const btnDesc= document.querySelector("#btn-desc");
+                const btnInc= document.querySelector("#btn-inc");
+
+                const descCounterView = App.ClickCountView(counterDesc, {updateEl, triggerEl: btnDesc});
+                const incCounterView = App.ClickCountView(counterInc, {updateEl, triggerEl: btnInc});
+                
+                descCounterView.updateView();
+            })()
+        </script>
+    </body>
+</html>

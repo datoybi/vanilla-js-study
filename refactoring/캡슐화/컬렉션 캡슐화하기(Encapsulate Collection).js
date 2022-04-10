@@ -24,9 +24,7 @@ class Person {
         this._course = [];
     }
     get name() {return this._name;}
-    get course() {return this._course;}
-    set course(aList) {this._course = aList;}
-
+    
     addCourse(aCourse){
         this._course.push(aCourse);
     }
