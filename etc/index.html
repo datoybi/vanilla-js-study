@@ -16,7 +16,7 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="button" value="click me" id="myBtn" />
+    <!-- <input type="button" value="click me" id="myBtn" />
     <a href="https://www.naver.com/" id="myLink">go naver</a>
     <ul id="myLinks">
         <li id="goSomewhere">Go somewhere</li>
@@ -26,6 +26,24 @@
     <div id="myDiv">
         <input type="button" value="click me" id="myBtn2" />
     </div>
-    <script src="./event.js"></script>
+    <script src="./event.js"></script> -->
+    <script src="./class.js"></script> 
+    <script>
+        (() => {   
+            p1 = new Person();
+            p2 = new Person();
+
+            p1.data = 10;
+            p1.increase();
+            p1.toString();
+
+            p2.data = 20;
+            p2.increase();
+            p2.toString();
+
+
+        })()
+
+    </script>
 </body>
 </html>
