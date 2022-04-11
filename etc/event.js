@@ -184,29 +184,29 @@
 //         전체 페이지에 하나만 할당해도 된다.
 //         예제를 보자.
 
-// <ul id="myLinks">
-//     <li id="goSomewhere">Go somewhere</li>
-//     <li id="goanywhere">Go anywhere</li>
-//     <li id="sayHi">say hi</li>
-// </ul>
+{/* <ul id="myLinks">
+    <li id="goSomewhere">Go somewhere</li>
+    <li id="goanywhere">Go anywhere</li>
+    <li id="sayHi">say hi</li>
+</ul> */}
 // 이 에제에는 클릭에 반응해야 할 항목이 세개가 있다. 고전적이고 단순한 이벤트 핸들러 할당은 다음과 같다.
 // */
 
-// // var item1 = document.getElementById("goSomewhere");
-// // var item2 = document.getElementById("goanywhere");
-// // var item3 = document.getElementById("sayHi");
+// var item1 = document.getElementById("goSomewhere");
+// var item2 = document.getElementById("goanywhere");
+// var item3 = document.getElementById("sayHi");
 
-// // item1.addEventListener("click", function(event){
-// //     location.href="https://www.naver.com/";
-// // }, false);
+// item1.addEventListener("click", function(event){
+//     location.href="https://www.naver.com/";
+// }, false);
 
-// // item2.addEventListener("click", function(event){
-// //     document.title = "I changed the document's title";
-// // }, false);
+// item2.addEventListener("click", function(event){
+//     document.title = "I changed the document's title";
+// }, false);
 
-// // item3.addEventListener("click", function(event){
-// //     console.log("hi");
-// // }, false);
+// item3.addEventListener("click", function(event){
+//     console.log("hi");
+// }, false);
 
 // // 이벤트 위임은 다음과 같이 DOM 트리에서 가능한 가장 높은 요소에 이벤트 핸들러를 단 하나만 할당하여 이 문제를 해결한다.
 
