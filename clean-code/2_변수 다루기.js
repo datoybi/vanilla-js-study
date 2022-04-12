@@ -14,7 +14,6 @@ var name = '이름3';
 console.log(name); //이름3
 // 값이 다르지만 변수 명이 일치할때 에러가 나오지 않는다.
 
-
 let name;
 name = '이름';
 name = '이름2';
