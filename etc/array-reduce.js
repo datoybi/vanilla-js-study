@@ -53,3 +53,71 @@ var ageSum = friends.reduce(function (acc, value, index){
 */
 
 console.log(ageSum);
+
+// 배열 순회하며 kim, hong 몇개있는기 갯수 세주는 함수
+// 값일 땐 누적해서 더하고 배열일 때는 누적 계속 해준다
+var votes = ["kim", "hong", "lee", "hong", "lee", "lee", "hong"];
+
+var reducer = function (accumulator, value, index, array) {
+  console.log(accumulator)
+  if (accumulator.hasOwnProperty(value)) {
+    accumulator[value] = accumulator[value] + 1;
+  } else {
+    accumulator[value] = 1;
+  }
+  return accumulator;
+}
+var initialValue = {};
+var result = votes.reduce(reducer, initialValue);
+console.log(result); // { kim: 1, hong: 3, lee: 3 }
+
+
+// reduce vs map
+var data = [1, 2, 3];
+
+var initialValue = [];
+var reducer = function (accumulator, value) {
+  accumulator.push(value * 2);
+  return accumulator;
+};
+var result = data.reduce(reducer, initialValue);
+console.log(result); // [2, 4, 6]
+
+var result2 = data.map(x => x * 2);
+console.log(result2); // [2, 4, 6]
+
+// 배열의 원소*2, map이 훨씬 간결하다.
+
+var data = [1, 2, 3, 4, 5, 6];
+
+var initialValue = [];
+var reducer = function(accumulator, value) {
+  if (value % 2 != 0) {
+    accumulator.push(value);
+  }
+  return accumulator;
+};
+var result1 = data.reduce(reducer, initialValue);
+console.log(result1); // [1, 3, 5]
+
+var result2 = data.filter(x => x % 2 != 0);
+console.log(result2); // [1, 3, 5]
+
+// fiter가 훨씬 직관적으로 보인다.
+// 하지만 1번과 2번을 동시에 갖업해야 한다면?
+
+var initialValue = [];
+var reducer = function(accumulator, value) {
+  if (value % 2 != 0) {
+    accumulator.push(value * 2);
+  }
+  return accumulator;
+}
+var result1 = data.reduce(reducer, initialValue);
+console.log(result1); // [2, 6, 10]
+
+var result2 = data.filter(x => x % 2 != 0).map(x => x * 2);
+console.log(result2); // [2, 6, 10]
+// reduce는 한번 순회하면 되지만 filter/map 조합은 두번 순회해야 한다.
+
+//https://medium.com/@hongkevin/js-3-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%B0%B0%EC%97%B4-%EB%A9%94%EC%84%9C%EB%93%9C-reduce-100-%ED%99%9C%EC%9A%A9%EB%B2%95-feat-egghead-io-97c679857ece
