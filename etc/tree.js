@@ -27,7 +27,6 @@ const data = [
 } 
 */
 
-
 // 요소의 id를 배열 인덱스에 매핑 
 // 예를들어... 56(0번째 인덱스이기 때문에): 0, 81: 1, 74: 2 ...
 const idMapping = data.reduce((acc, el, i) => {
