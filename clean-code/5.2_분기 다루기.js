@@ -108,5 +108,8 @@ function getActiveUserName(user, isLogin){
 } 
 // GOOD
 function getActiveUserName2(user, isLogin){
-    return isLogin && user ? user.name : '이름없음';
+    if (isLogin && user) {
+        return user.name || '이름없음'
+    }
+    // return isLogin && user ? user.name : '이름없음';
 }
