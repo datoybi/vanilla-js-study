@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size:10px;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 기기의 너비 기준으로 초기화하겠다, 텍스트 크기가 유지된다. -->
+    <title>Document</title>
+    <style>
+        /*em 예제, outer가 20px이니 inner의 font-size도 20px이 된다. 
+        .outer {
+            font-size: 20px;
+        }
+        .inner {
+            font-size: 1em; 
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: tomato;
+          
+        }
+        */
+
+        /*rem 예제, 루트인 html에 font-size를 10을 줬으니 inner도 1rem = 10px이다. 
+        .outer {
+            font-size: 20px;
+        }
+        .inner {
+            font-size: 1rem; 
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: tomato;
+        }
+        */
+
+        /* em으로 내,외부 여백 크기를 정할 때는 자기 자신의 글자 크기를 기준으로 한다. padding:10px  
+        .outer {
+            font-size: 20px;
+        }
+        .inner {
+            font-size: 10px; 
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: tomato;
+            padding: 1em; 
+        }
+        */
+
+        /* em으로 내,외부 여백 크기를 정할 때는 자기 자신의 글자 크기를 기준으로 한다. padding:10px */
+        .outer {
+            font-size: 20px;
+        }
+        .inner {
+            font-size: 25px; 
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: tomato;
+            padding: 1rem; 
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">고양이</div>
+    </div>
+
+</body>
+</html>
+<!--
+    반응형 웹
+    다양한 기기나 브라우저의 크기에 맞게 구성이나 크기를 변경해가며 
+    반응하는 웹문서 또는 이를 위해 사용하는 기법을 뜻한다.
+
+    Viewport?
+    뷰포트(Viewport) : 현재 화면에 보여지고 있는 영역
+
+    em & rem ?
+    px은 절대길이 단위이다. 그래서 어떤 상황에서도 동일한 값을 유지하므로 가변성이 없다.
+    em & rem은 박스에서 텍스트 크기를 조정할 때 사용하는 상대 단위이다.
+    em은 부모 요소의 크기를, rem은 루트 요소(<html>)의 글꼴 크기를 의미한다.
+    html의 default 글꼴 크기는 16px이다.
+    em으로 내,외부 여백 크기를 정할 때는 자기 자신의 글자 크기를 기준으로 한다
+
+-->

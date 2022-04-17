@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img {
+        width: 200px;
+        height: 200px;
+    } 
+
+    @media screen and (min-width: 800px){ /* 800px 이상 */
+        img {
+            width: 400px;
+            height: 400px;
+        }
+    }
+    
+    @media screen and (min-width: 1200px){ /* 1200px 이상  그냥 width: 는 정확히 1200일때만 동작 */
+        img {
+            width: 800px;
+            height: 800px;
+        }
+    }
+    
+</style>
+<body>
+    <img src="http://img.etoday.co.kr/pto_db/2020/12/20201216104325_1555515_710_340.jpg"/>
+</body>
+</html>
+<!-- 
+미디어 쿼리
+    미디어 타입을 인식하고 콘텐츠를 읽어들이는 
+    기기나 브라우저의 물리적 속성을 감지할 수 있는 유용한 장치(기능)입니다.
+    모든 미디어 쿼리는 다음 두가지 구성 요소를 지니고 있습니다.
+    미디어 타입, 조건에 대한 물음(쿼리)
+    
+@media 미디어_타입 and (조건에 _대한_물음) {
+    미디어 타입과 조건을 모두 만족할 때 
+    덮어씌울 스타일 선언문
+}
+
+미디어 쿼리 적용의 여러 형태
+<link rel="stylesheet" href="style.css" media="screen and (max-width: 768px)">
+@import url("style.css") screen and (max-width: 768px);
+
+-->

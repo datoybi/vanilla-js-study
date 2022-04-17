@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<style>
+    .container {
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .header {
+        width: 100%;
+        height: 100px;
+        background-color: tomato;
+    }
+    .main {
+        float: left;
+        width: 67%;
+        height: 300px;
+        padding: 10%;
+        background-color: orange;
+    }
+    .aside {
+        float: right;
+        width: 33%;
+        height: 300px;
+        padding: 10%;
+        background-color: purple;
+    }
+    .footer {
+        clear: both; /*float의 효과 clear*/
+        width: 100%;
+        height: 100px;
+        background-color: violet;
+    }
+    
+</style>
+<body>
+    <div class="container">
+        <div class="header">HEADER</div>
+        <div class="main">MAIN</div>
+        <div class="aside">ASIDE</div>
+        <div class="footer">FOOTER</div>
+    </div>
+</body>
+</html>
+<!--
+비율에 기반한 크기 조절
+    부모요소의 크기에 비례해 자식 요소의 크기가 변하는 방식은 가변 레이아웃을 만들 때 흔히 사용되는 방식이다.
+    그럴때 사용하는 상대적이고 바례적인 단위는 바로 % 퍼센트이다.
+
+%
+    보통 부모 요소와의 상대적 크기를 지정할 때 사용한다.
+    너비와 높이, 여백 뿐 아니라 글자 크기에도 사용 할 수 있다.
+    
+    // 부모 요소의 글자 크기가 100%
+    font-size: 50%;
+    // 부모 요소의 높이가 100%
+    height: 50%;
+    // 부모 요소의 너비가 100%;
+    width: 50%;
+    margin: 10%;
+    padding:10%;
+-->

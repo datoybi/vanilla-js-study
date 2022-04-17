@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* div {
+            width: 50%;
+        }
+        img {
+            width: 100%;
+        } */
+
+    </style>
+</head>
+<body>
+    <!-- <div>
+        <img src="http://img.etoday.co.kr/pto_db/2020/12/20201216104325_1555515_710_340.jpg"/>
+    </div> -->
+    <picture>
+        <source srcset="https://images.chosun.com/resizer/dv0dISHip8uIUXRta3V2bVBzxp4=/466x600/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/5LJ3RNO2PN6YOZZNDXLJ5BD2EI.jpg" media="(min-width: 1200px)">
+        <source srcset="https://upload.wikimedia.org/wikipedia/ko/thumb/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png/230px-%EC%8B%A0%EC%A7%B1%EA%B5%AC.png" media="(min-width: 800px)">
+        <img src="http://img.etoday.co.kr/pto_db/2020/12/20201216104325_1555515_710_340.jpg" >
+    </picture>
+</body>
+</html>
+<!--
+    이미지 요소에도 상대단위 em, vw, %등 얼마든지 사용할 수 있다.
+    하지만 이때 주의할 점은 브라우저가 대개 이미지의 비율을 유지한다는 점,
+    그리고 이미지가 무작정 커지는 것을 경계해야 한다는 점이다 (max-width).
+
+    <picture>
+        <source srcset="desktop.png" media="(min-width: 1200px)">
+        <source srcset="table.png" media="(min-width: 800px)">
+        <img src="mobile.png">
+    </picture>
+    
+-->

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .message {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100px;
+            padding: 0.5em;
+            border: 1px solid #000;
+            font-size: 1.5em;
+        }
+        .message__text {
+            /* width: 80%; */
+            width: calc(100% - 100px);
+            height: 100%;
+            border: none;
+            resize: none;
+        }
+        .message__text:focus{ outline: none; }
+        .message__send {
+            width: 100px;
+            height: 100%;
+            border-radius: 8px;
+            background-color: #9ec4cf;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="message">
+        <textarea class="message__text"></textarea>
+        <button class="message__send">전송</button>
+    </div>
+</body>
+</html>
+
+<!--
+    calc()
+    계산식의 결과를 속성값으로 지정할 수 있다.
+    괄호 안에 표현식 하나를 받고, 표현식의 결과가 최종 값이 된다.
+    width: calc(30px - 20px)
+
+-->
