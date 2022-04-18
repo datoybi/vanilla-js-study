@@ -1,0 +1,68 @@
+.thumbs__wrapper {
+    display: flex;
+    flex-wrap: wrap; /* 1차원 정렬을 여러 행으로 할 수 있다 */
+    justify-content: space-between;
+    margin:60px 0 0 200px;
+    padding: 20px 0 0 10px;
+}
+.thumbs__item {
+    width: 25%;
+    margin: 0 0 15px 0;
+    padding: 0 10px;
+}
+
+.thumbs__thumbnail {
+    max-width: 100%;
+    margin: 0 0 10px 0;
+} 
+.thumbs__info {
+    display: flex;
+}
+.thumbs__profile {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: tomato;
+}
+.thumbs__text {
+    width: calc(100% - 36px);
+    padding-left: 10px;
+}
+.thumbs__text--title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5em;
+}
+.thumbs__text--owner {
+    font-size: 1rem;
+    color: #aeaeae;
+    margin-bottom: 0.2em;
+}
+.thumbs__text--anal {
+    font-size: 0.9rem;
+    color: #aeaeae;
+}
+
+@media screen and (max-width: 1000px){
+    .thumbs__item {
+        width: 33%;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .thumbs__wrapper {
+        margin: 60px 0 0 60px;
+    }
+    .thumbs__item {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .thumbs__wrapper {
+        margin: 60px 0 0 0;
+        padding: 20px 0 0 0;
+    }
+    .thumbs__item {
+        width: 100%;
+    } 
+}

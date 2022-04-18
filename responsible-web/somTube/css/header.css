@@ -1,0 +1,101 @@
+/*
+보니까 전부 display flex와 justify content를 space-btweeen으로 주고
+양 옆은 margin으로 띄워서 반응형 수행
+
+보이고 안보이고는 media쿼리로 수행
+*/
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 3px #000; /*얘는 이렇게 하네*/
+    z-index: 20;
+}
+
+.header__wrapper {
+    display: flex;
+    align-items: center; /* 세로 정렬 */
+    justify-content: space-between; /* 가로 정렬 */
+    height: 60px;
+    padding: 0 16px;
+}
+
+.header__start{
+    height: 40px;
+    line-height: 40px;
+}
+.header__hamburger {
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+}
+.header__title {
+    font-size: 1.2rem;
+    margin-left: 6px;
+}
+
+.header__center {
+    width: 50%;
+}
+.header__form {
+    display: flex;
+    max-width: 100%;
+}
+.header__input--text {
+    width: calc(100% - 60px); /* 버튼이 60px */
+    height: 40px;
+    padding: 0 6px;
+    border: 1px solid #8f8f8f;
+    border-right: none;
+    border-radius: 2px 0 0 2px;
+}
+.header__input--button {
+    width: 60px;
+    height: 40px;
+    border: 1px solid #8f8f8f;
+    border-left: none;
+    border-radius: 0 2px 2px 0;
+}
+
+.header__end {
+    display: flex;
+}
+.header__search {
+    display: none;
+    margin-right: 5px;
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+}
+.header__profile {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #eaeaea;
+    border-radius: 50%;
+    background-color: tomato;
+    background-image: url(../imgs/image.png);
+    background-size: 40px 40px;
+}
+
+@media screen and (max-width: 800px){ /* 800px보다 작으면 */
+    .header__title {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px){ /* 400px보다 작으면 */
+    .header__center {
+        display: none;
+    }
+    .header__search {
+        display: block;
+    }
+
+}
+
+
+
+
+
