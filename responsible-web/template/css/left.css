@@ -1,0 +1,13 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    background-color: #f0f0f0;
+}
+.nav__wrapper {
+    display: flex;
+    width: 60px;
+    height: 100vh;
+    box-shadow: 0 0 3px #000;
+}

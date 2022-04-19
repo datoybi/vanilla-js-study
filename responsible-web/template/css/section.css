@@ -1,0 +1,13 @@
+.section {
+    display: flex;
+    justify-content: space-between;
+
+}
+.section__wrapper {
+   width: 100%;
+   /* height: 100vh; 유니티는 어캐 될지 몰라서 일단 이렇게 잡음 비율을 망가뜨리면 안될것같아성 */
+   background-color: aqua; 
+}
+.thumbs__thumbnail {
+    width: 100%;
+}
