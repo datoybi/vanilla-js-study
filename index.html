@@ -1,73 +1,58 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<style type="text/css">
-.d1 {position:relative; top:0; width:100%; height:200px;
-background-color:7DC800; overflow:auto;}
-.d2 {position:relative; top:0; width:100%; height:200px;
-background-color:FFFFC5; overflow:auto;}
-#hr {cursor:pointer;}
-</style>
-<script type="text/javascript">
-    
-
-window.onload = () => {
-    
-    console.log("clientX Y : " + clientX, clienty);
-};
-  
-var startpos, diffpos=0;
-var erlaubt = false;
-
-function on_mouse_down(e) {
-        if (!document.all)
-                startpos = e.screenY + diffpos;
-        else
-                startpos = event.clientY + diffpos;
-
-        erlaubt = true;
-        return false;
-}
-
-function on_mouse_up(e) {
-        erlaubt = false;
-        return false;
-}
-
-function on_mouse_move(e) {
-        if (erlaubt) {
-                if (!document.all)
-                        jetztpos = e.screenY;
-                else
-                        jetztpos = event.clientY;
-        
-                diffpos = startpos-jetztpos;
-        
-                if (diffpos > -200 && diffpos < 200) {
-                        document.getElementById("d1").style.height = 200 - diffpos + "px";
-                        document.getElementById("d2").style.height = 200 + diffpos + "px";
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+                .hide {
+                        display : none;
                 }
-        }
-}
-
-
-function init() {
-        document.getElementById("hr").onmousedown = on_mouse_down;
-        document.onmouseup = on_mouse_up;
-        document.onmousemove = on_mouse_move;
-}
-</script>
+        </style>
 </head>
-<body onload="init()">
-<div class="d1" id="d1">
-        1<br />
-        1<br />
-        1<br />
-</div>
-<hr class="hr" id="hr" />
-<div class="d2" id="d2">
-        2<br />
-        2<br />
-        2<br />
-</div>
+<body>
+        <div id="myDiv">
+                <li class="F11101" id="#ROOT#F11101">
+                        도로
+                        <ul>
+                        <li class="14" id="#ROOT#F11101#14">
+                                구조물공
+                                <ul>
+                                <li class="F15121테스트1교" id="#ROOT#F11101#14#F15121테스트1교">(PSC Beam교)
+                                        테스트1교
+                                </li>
+                                </ul>
+                        </li>
+            
+                        <li class="17" id="#ROOT#F11101#17">
+                            포장공
+                            <ul>
+                                <li class="F11120" id="#ROOT#F11101#17#F11120">
+                                    본선테스트1교
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            
+
+<script>
+const $div = document.querySelector("#myDiv");
+
+$div.addEventListener('click', e => {
+        const children = e.target.childNodes;
+
+if(children.length > 1 && children[1].tagName ==="UL") {
+        console.log(children[1])
+        children[1].classList.toggle('hide');
+  }
+
+})
+
+
+
+</script>
 </body>
-</html> 
+</html>
