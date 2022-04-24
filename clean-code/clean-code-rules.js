@@ -401,4 +401,74 @@ const { 0: st, 2: th } = orders;
 console.log(st);
 console.log(th);
 
-// 44까지 정리함
+// Object freeze 💛
+// 1차원적인 것만 가능 OPTIONS 같은 경우는 freeze 되지 않는다.
+const STATUS = Object.freeze({
+  PENDING: "PENDING",
+  SUCCESS: "SUCCESS",
+  FAIL: "FAIL",
+  OPTIONS: {
+    GREEN: "GREEN",
+    RED: "RED",
+  },
+});
+
+STATUS.PENDING = "P";
+console.log(STATUS.PENDING); // PENDING - 변하지않음
+
+STATUS.NEW_PROP = "PP";
+console.log(STATUS); // {"PENDING":"PENDING","SUCCESS":"SUCCESS","FAIL":"FAIL"}
+
+console.log(Object.isFrozen(STATUS.FAIL)); // true
+
+Object.isFrozen(STATUS.OPTIONS); // false
+
+STATUS.OPTIONS.GREEN = "G";
+STATUS.OPTIONS.YELLOW = "Y";
+console.log(STATUS.OPTIONS); // {"GREEN":"G","RED":"RED","YELLOW":"Y"}
+
+// 직접 접근 지양하기 💛
+// BAD
+const model = {
+  isLogin: false,
+  isValidToken: false,
+};
+
+function login() {
+  model.isLogin = true;
+  model.isValidToken = true;
+}
+
+function validToken() {
+  model.isLogin = false;
+  model.isValidToken = false;
+}
+
+someElement.addEventListener("click", login);
+
+// GOOD 직접 접근 지양
+const model1 = {
+  isLogin: false,
+  isValidToken: false,
+};
+
+//model에 대신 접근
+function setLogin(bool) {
+  model.isLogin = bool;
+  serverAPI.log(model.isLogin);
+}
+
+function setValidToken(bool) {
+  model.isValidToken = bool;
+  serverAPI.log(model.isValidToken);
+}
+
+function login() {
+  setLogin(true);
+  setValidToken(true);
+}
+
+function logout() {
+  setLogin(false);
+  setValidToken(false);
+}
