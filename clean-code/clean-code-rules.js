@@ -472,3 +472,269 @@ function logout() {
   setLogin(false);
   setValidToken(false);
 }
+
+// 복잡한 인자 관리하기 💛
+
+// 이렇게 매개변수를 넘겨주지 않았을 경우 애러 처리하기
+function createCar({ name, brand, color, type }) {
+  if (!name) {
+    throw new Error("name is a required");
+  }
+  if (!brand) {
+    throw new Error("brand is a required");
+  }
+}
+
+createCar({ name: "CAR", type: "SUV" });
+
+// default value 💛
+function createCarousel(options) {
+  options = options || {};
+  var margin = options.margin || 0;
+  var center = options.center || false;
+  var navElement = options.navElement || "div";
+
+  return {
+    margin,
+    center,
+    navElement,
+  };
+}
+createCarousel();
+
+// upgrade !
+function createCarousel({
+  margin = 0,
+  center = false,
+  navElement = "div",
+} = {}) {
+  return {
+    margin,
+    center,
+    navElement,
+  };
+}
+createCarousel();
+
+// more upgrade !
+const required = (argName) => {
+  throw new Error("required is " + argName);
+};
+
+function createCarousel({
+  items = required("items"),
+  margin = required("margin"),
+  center = false,
+  navElement = "div",
+} = {}) {
+  return {
+    items,
+    margin,
+    center,
+    navElement,
+  };
+}
+createCarousel();
+
+// Rest Parameters 💛
+// 나머지 매개변수는 매개변수의 맨 마지막에 작성되어야만 한다.
+function sumTotal(initValue, bonusValue, ...args) {
+  return args.reduce((acc, curr) => acc + curr, initValue);
+}
+console.log(sumTotal(100, 99, 1, 2, 3, 4, 5));
+
+// Rest Parameters 💛
+// BAD
+
+function handleClick() {
+  return setState(false);
+}
+function showAlert(message) {
+  return alert(message);
+}
+
+// arr.push()에도 반환값이 있다
+
+// 화살표 함수 💛
+// 화살표 함수에서는 argument, call, apply, bind도 사용할 수 없다.
+
+// const user = {
+//   name: 'Poco',
+//   getName: () => {
+//     return this.name;
+//   }
+// }
+
+// console.log(user.getName()); // undefined
+
+const user = {
+  name: "Poco",
+  getName() {
+    return this.name;
+  },
+};
+
+console.log(user.getName()); // Poco
+
+// 화살표 함수로 만든 함수는 생성자로 사용할 수 없다
+
+// const Person = (name, city) => {
+//   this.name = name;
+//   this.city = city;
+// };
+
+// const person = new Person('poco', 'korea');
+// console.log(person); // Uncaught TypeError: Person is not a constructor
+
+function Person(name, city) {
+  this.name = name;
+  this.city = city;
+}
+
+const person1 = new Person("poco", "korea");
+console.log(person1); // {"name":"poco","city":"korea"}
+
+// callback function 💛
+
+// Bad
+function register() {
+  const isConfirm = confirm("회원가입에 성공했습니다.");
+
+  if (isConfirm) {
+    redirectUserInfoPage();
+  }
+}
+
+function login() {
+  const isConfirm = confirm("로그인에 성공했습니다.");
+
+  if (isConfirm) {
+    redirectUserInfoPage();
+  }
+}
+
+// GOOD
+function confirmModal(message, cbFunc) {
+  const isConfirm = confirm(message);
+  if (isConfirm && cbFunc) {
+    cbFunc();
+  }
+}
+
+function register() {
+  confirmModal("회원가입에 성공했습니다.", redirectUserInfoPage);
+}
+
+function login() {
+  confirmModal("로그인에 성공했습니다.", redirectUserInfoPage);
+}
+
+// 순수 함수 Pure function 💛
+
+// BAD
+// 함수를 사용할 때 예측이 안된다.
+let num1 = 10;
+let num2 = 20;
+
+function impureSum1() {
+  return num1 + num2;
+}
+
+function impureSum2(newNum) {
+  return num1 + newNum;
+}
+
+console.log(impureSum1()); // 30
+num1 = 30;
+console.log(impureSum1()); // 50
+console.log(impureSum2(30)); // 80
+
+// GOOD 예측가능하다
+
+num1 = 10;
+num2 = 20;
+
+function pureSum1(num1, num2) {
+  return num1 + num2;
+}
+
+function pureSum2(newNum) {
+  return num1 + newNum;
+}
+
+console.log(pureSum1(10, 20)); // 30
+console.log(pureSum1(10, 20)); // 30
+console.log(pureSum1(30, 100)); // 130
+console.log(pureSum1(30, 100)); // 130
+
+// BAD
+//  객체, 배열 -> 새롭게 만들어서 반환
+
+const obj1 = { one: 1 };
+function changeObj(targetObj) {
+  targetObj.one = 100;
+  return targetObj;
+}
+
+console.log(changeObj(obj1)); // {"one":100}
+console.log(obj1); // {"one":100}
+
+// good
+const obj2 = { one: 1 };
+function changeObj(targetObj) {
+  return { ...targetObj, one: 100 };
+}
+
+console.log(changeObj(obj2)); // {"one":100}
+console.log(obj2); // {"one":100}
+
+// Closure 💛
+// 클로저 예제
+function add(num1) {
+  return function sum(num2) {
+    return num1 + num2;
+  };
+}
+
+const addOne = add(1);
+const addTwo = add(2);
+
+console.log(addOne(3)); // 4
+console.log(addTwo(3)); // 5
+
+// 다른 예제
+function log(value) {
+  return function (fn) {
+    fn(value);
+  };
+}
+
+const logFoo = log("foo");
+logFoo((v) => console.log(v));
+logFoo((v) => console.info(v));
+logFoo((v) => console.error(v));
+logFoo((v) => console.warn(v));
+
+// 클로저 변환 전
+// const arr = [1, 2, 3, 'A', 'B', 'C'];
+
+// function isTypeOf(value, type){
+//     return (typeof value === type);
+// }
+
+// console.log(isTypeOf(arr[0], 'number'))
+
+// 클로저 변환
+const arr1 = [1, 2, 3, "A", "B", "C"];
+
+function isTypeOf(type) {
+  return function (value) {
+    return typeof value === type;
+  };
+}
+
+const isNumber = isTypeOf("number");
+console.log(isNumber(arr1[0])); // true
+
+const isString = isTypeOf("string");
+console.log(isNumber(arr1[4])); // true
