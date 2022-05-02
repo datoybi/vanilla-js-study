@@ -6,17 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .left {
-            width: 200px;
-            height: 200px;
-            background-color: aqua;
-        }
+			.container {
+				display: flex;
+				justify-content: flex-start;
+			}	
+			* {
+				margin: 0;
+			}
+			.myDiv {
+				width: 400px;
+				height: 100vh;
+				background-color: #eaeaea;
+			}
+			.resize {
+				border-left: 3px solid tomato;
+			}
     </style>
 </head>
 <body>
-    <div class="left">
-        
-    </div>
+	<div class="container">
+		<div class="myDiv"></div>
+		<div class="resize"></div>
+	</div>
     <script src="./coordinate.js"></script>
 </body>
 </html>
