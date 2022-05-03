@@ -63,7 +63,7 @@ function getDateTime(targetDate) {
 }
 
 // 새 함수 추가
-function getDateTtime() {
+function currentDateTime() {
   const currentDateTime = getDateTime(new Date());
 
   return {
@@ -72,9 +72,6 @@ function getDateTtime() {
     hour: currentDateTime.hour + "분 전",
   };
 }
-
-// parseInt 사용시 두번쨰 인수도 넣어주는 게 좋다 💛
-parseInt("9.999", 10);
 
 // short-circuit-evaluation 💛
 // AND 모두 참이여야 참
@@ -85,7 +82,9 @@ console.log(true && false && "도달 X"); // false
 console.log(false || false || "도달 O"); // 도달 O
 console.log(true || true || "도달 X"); // true
 
-function favoriteDog(domeDog) {
+// BAD
+
+function favoriteDog(someDog) {
   // let favoriteDog;
   // if (someDog) {
   //   if (someDog) {
@@ -201,7 +200,7 @@ function registerDay(userInputDay) {
 }
 
 // 예측가능하고 디버깅 하기 쉬운 코드 만들기 💛
-// 괄호를 이용해 우선순위 보기편하게 만들기
+// 괄호를 이용해 우선순위를 직관적으로 알 수 있게 구현하기
 if ((isLogin && token) || user) {
 }
 
@@ -216,7 +215,7 @@ function increment() {
 
 // Nullish coalescing operator : ?? 나중에 공부해보기
 
-// 배열 요소에 접근할때 [0] [1] 이런식으로 원소로 접근 지양하기 💛
+// 배열 요소에 접근할때 [0] [1] 이런식으로 인덱스값으로 접근 지양하기💛
 // BAD
 function operatorTime(input, operators, is) {
   input[0].split("").forEach((num) => {});
@@ -300,7 +299,7 @@ const person2 = {
 
 // computed property name 💛
 
-// const funcName 'func';
+// const funcName = 'func';
 
 // const obj = {
 // 	[funcName]() {
@@ -337,7 +336,7 @@ function getUsetType(type) {
   return USER_TYPE[type] || "해당 없음";
 }
 
-// Object Destructuring 💛
+// Object Destructuring 구조 분해 할당 💛
 // BAD
 function Person(name, age, location) {
   this.name = name;
@@ -544,14 +543,6 @@ function sumTotal(initValue, bonusValue, ...args) {
 console.log(sumTotal(100, 99, 1, 2, 3, 4, 5));
 
 // Rest Parameters 💛
-// BAD
-
-function handleClick() {
-  return setState(false);
-}
-function showAlert(message) {
-  return alert(message);
-}
 
 // arr.push()에도 반환값이 있다
 
@@ -686,7 +677,7 @@ function changeObj(targetObj) {
 }
 
 console.log(changeObj(obj2)); // {"one":100}
-console.log(obj2); // {"one":100}
+console.log(obj2); // {"one":1}
 
 // Closure 💛
 // 클로저 예제
@@ -738,3 +729,7 @@ console.log(isNumber(arr1[0])); // true
 
 const isString = isTypeOf("string");
 console.log(isNumber(arr1[4])); // true
+
+// parseInt 사용시 두번쨰 인수도 넣어주는 게 좋다 💛
+parseInt("9.999", 10);
+// arr.push()에도 반환값이 있다
