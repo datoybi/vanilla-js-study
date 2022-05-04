@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+			.container {
+				display: flex;
+				justify-content: flex-start;
+			}	
+			* {
+				margin: 0;
+			}
+			.myDiv {
+				width: 400px;
+				height: 100vh;
+				background-color: #eaeaea;
+			}
+			.resize {
+				width: 4px;
+    		background: tomato;
+			}
+			.resize:hover {
+    		background: darkred;
+				cursor: col-resize;
+			}
+
+    </style>
+</head>
+<body>
+	<div class="container">
+		<div class="myDiv"></div>
+		<div class="resize"></div>
+	</div>
+    <script src="./coordinate.js"></script>
+</body>
+</html>
