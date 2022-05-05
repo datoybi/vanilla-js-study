@@ -2,6 +2,12 @@
 //https://github.com/blackcoffee-study/moonbucks-menu
 
 // 회고
+// 리펙토링이 굉장히 인상깊었다.
+// async await 싱글 스레드에 대한 이해
+
+// 피드백 루프
+// 다른사람의 코드 읽기
+// 코드 리뷰 - 10분간 코드 복귀후 리팩토링 가능한지 
 
 // TODO: 서버 요청 부분
 // [x] 로컬에서 웹 서버를 실행시킨다.
