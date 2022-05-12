@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-			.container {
+			.left-bar {
 				display: flex;
 				justify-content: flex-start;
 			}	
@@ -19,21 +19,30 @@
 				background-color: #eaeaea;
 			}
 			.resize {
-				width: 4px;
-    		background: tomato;
+				width: 3px;
+  			background: #808080;
+				position: absolute;
+				left: 400px;
+				top: 0;
+				height: 100vh;
 			}
 			.resize:hover {
-    		background: darkred;
+				box-shadow: 0 0 0 8px rgb(33 33 33 / 20%);
 				cursor: col-resize;
+				transition: 0.1s;
 			}
-
+			.resize:active {
+				cursor: col-resize;
+				box-shadow: none !important;
+			}
     </style>
 </head>
 <body>
-	<div class="container">
+	<div class="left-bar">
 		<div class="myDiv"></div>
 		<div class="resize"></div>
 	</div>
-    <script src="./coordinate.js"></script>
+	
+    <script src="./resizable.js"></script>
 </body>
 </html>
