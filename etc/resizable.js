@@ -25,34 +25,34 @@ const $ = (selector) => document.querySelector(selector);
 const resize = $(".resize");
 
 function dragElement(elmnt) {
-  let pos1 = 0,
-    pos3 = 0;
-  elmnt.onmousedown = dragMouseDown;
+  let pos1 = 0;
+  let pos3 = 0;
+  const el = elmnt;
 
-  function dragMouseDown(e) {
-    e = e || window.event;
+  function elementDrag(event) {
+    const e = event || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos3 = e.clientX;
+    el.style.left = `${el.offsetLeft - pos1}px`;
+    $(".myDiv").style.width = `${el.offsetLeft - pos1}px`;
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+    $(".myDiv").style.width = el.style.left;
+  }
+
+  function dragMouseDown(event) {
+    const e = event || window.event;
     e.preventDefault();
     pos3 = e.clientX;
     document.onmouseup = closeDragElement;
     document.onmousemove = elementDrag;
   }
 
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    pos1 = pos3 - e.clientX;
-    pos3 = e.clientX;
-    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-    $(".myDiv").style.width = elmnt.offsetLeft - pos1 + "px";
-  }
-
-  function closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
-    $(".myDiv").style.width = elmnt.style.left;
-  }
+  el.onmousedown = dragMouseDown;
 }
 
 dragElement(resize);
-
-window.onload = () => {};
