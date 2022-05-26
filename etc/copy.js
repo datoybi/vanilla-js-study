@@ -1,14 +1,14 @@
 // !: 얕은 복사
 // =
 // 아예 선언을 따로 한 경우
-const obj1 = { value: 10 };
-const newObj1 = { value: 10 };
-console.log(obj1 === newObj1); // false - 참조값이 다르다
+const obj = { value: 10 };
+const newObj = { value: 10 };
+console.log(obj === newObj); // false - 참조값이 다르다
 
 // = 연산자를 이용해 얕은 복사(객체)
-const obj = { value: 10 };
-const newObj = obj;
-console.log(obj === newObj); // true - 참조값이 같다
+const obj2 = { value: 10 };
+const newObj2 = obj1;
+console.log(obj2 === newObj2); // true - 참조값이 같다
 
 // = 연산자를 이용해 얕은 복사(배열)
 const arr = [1, 2, 3];
