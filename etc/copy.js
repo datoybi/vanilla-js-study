@@ -1,4 +1,4 @@
-// 얕은 복사
+// !: 얕은 복사
 // =
 // 아예 선언을 따로 한 경우
 const obj1 = { value: 10 };
@@ -19,8 +19,8 @@ console.log(arr === newArr); // true - 참조값이 같다
 arr.push(4);
 console.log(newArr); // [1,2,3,4]
 
-// 깊은복사 + 얕은 복사
-// Object.assign()
+// !: 깊은복사 + 얕은 복사
+// !: Object.assign()
 
 const category = { category: "espresso" };
 const category1 = Object.assign({}, category); // false - 참조값이 다르다
@@ -63,7 +63,7 @@ console.log(obj); // {"a":444,"b":{"c":100}}
 console.log(newObj === obj); // false
 console.log(newObj.b.c === obj.b.c); // true
 
-// 전개연산자
+// !: 전개연산자
 
 const category = { category: "espresso" };
 const category1 = { ...category }; // false - 참조값이 다르다
@@ -99,7 +99,7 @@ console.log(obj); // {"a":444,"b":{"c":100}}
 console.log(newObj === obj); // false
 console.log(newObj.b.c === obj.b.c); // true
 
-// copy
+// !: DEEP COPY
 function clone(item) {
   if (!item) {
     return item;
@@ -108,6 +108,7 @@ function clone(item) {
   var types = [Number, String, Boolean],
     result;
 
+  // normalizing primitives if someone did new String('aaa'), or new Number('444');
   types.forEach(function (type) {
     if (item instanceof type) {
       result = type(item);
@@ -153,4 +154,24 @@ function clone(item) {
   return result;
 }
 
-console.log();
+const a = [1, 2, 3, 4];
+const b = clone(a);
+
+console.log(a);
+console.log(b);
+console.log(a === b);
+
+const obj = {
+  a: 1,
+  b: {
+    c: 2,
+  },
+};
+
+const newObj = clone(obj);
+
+console.log(obj);
+console.log(newObj);
+obj.b.c = 100;
+console.log(obj);
+console.log(newObj);
