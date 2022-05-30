@@ -157,7 +157,6 @@ function App() {
     });
 
     $("#menu-list").addEventListener("click", (e) => {
-      // 이벤트 위임 사용
       if (e.target.classList.contains("menu-edit-button")) {
         updateMenuName(e);
         return;

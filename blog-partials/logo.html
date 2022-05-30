@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/source-code-pro.min.css"
+    />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        background: linear-gradient(45deg, #e6e2df 80%, #c2c1bd 100%);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .wrapper {
+        width: 100%;
+        font-family: "Source Code Pro", monospace;
+        margin: 0 auto;
+        height: 100%;
+      }
+      .wrapper h1 {
+        transform: translate(-50%, -50%) skew(10deg);
+        font-size: 20vw;
+        top: 50%;
+        left: 50%;
+        margin: 0;
+        position: absolute;
+        text-rendering: optimizeLegibility;
+        font-weight: 900;
+        color: rgba(255, 255, 0, 0.5);
+        text-shadow: 1px 4px 6px #e6e2df, 0 0 0 #66303a, 1px 4px 6px #e6e2df;
+        white-space: nowrap;
+      }
+      .wrapper h1:before {
+        content: attr(data-heading);
+        position: absolute;
+        left: 0;
+        top: -4.8%;
+        overflow: hidden;
+        width: 100%;
+        height: 50%;
+        color: #fbf7f4;
+        transform: translate(1.6vw, 0) skew(-13deg) scale(1, 1.2);
+        z-index: 2;
+        text-shadow: 2px -1px 6px rgba(0, 0, 0, 0.2);
+      }
+      .wrapper h1:after {
+        content: attr(data-heading);
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        color: #d3cfcc;
+        transform: translate(0vw, 0) skew(13deg) scale(1, 0.8);
+        clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%);
+        text-shadow: 2px -1px 6px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 contenteditable data-heading="SOM.io">SOM.io</h1>
+    </div>
+    <script>
+      // JS for content editable trick from Chris Coyier
+      var h1 = document.querySelector("h1");
+      h1.addEventListener("input", function () {
+        this.setAttribute("data-heading", this.innerText);
+      });
+    </script>
+  </body>
+</html>
