@@ -42,20 +42,12 @@
 		</head>
 		<body>
     <div class="range-slider">
-      <button>play</button>
-      <button>faster</button>
-      <button>stop</button>
+      <button id="play">play</button>
+      <button id="faster">faster</button>
+      <button id="stop">stop</button>
       <span>0:00</span>
-		<input type="range" id="slider" min="0" max="100" value="0">
+		<input type="range" id="slider" min="0" max="100" step="0.1" value="0">
 
     <script src="./range-slider.js"></script>
-		<script>
-			const slider =	document.querySelector("#slider")
-
-			slider.addEventListener("change", () => {
-				console.log(slider.value)
-			})
-
-		</script>
   </body>
 </html>
