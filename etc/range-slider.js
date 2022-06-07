@@ -1,9 +1,9 @@
 const $ = (selector) => document.querySelector(selector);
+const speed = [0.1, 1, 5, 10];
 
 const slider = (() => {
   let interval;
-  let isDone = false;
-  const speed = [100, 80, 40, 10];
+  let speedIdx = 0;
 
   return {
     setInterval: (newInterval) => {
@@ -12,47 +12,55 @@ const slider = (() => {
     getInterval: () => {
       return interval;
     },
-    setIsDone: () => {
-      isDone = !isDone;
+    setSpeed: (idx) => {
+      speedIdx = idx;
     },
-    getIsDone: () => {
-      return isDone;
+    getSpeed: () => {
+      return speedIdx;
     },
-
-    play: () => {
-      if (!slider.getInterval()) {
-        const interval = setInterval(() => {
-          let sliderValue = Number.parseFloat($("#slider").value);
-          if (sliderValue >= 100) {
-            slider.stop();
-            slider.setIsDone();
-          }
-          sliderValue += 0.1;
-          $("#slider").value = sliderValue.toFixed(1);
-        }, 10);
-        slider.setInterval(interval);
-        document.querySelector("#play").innerHTML = "Pause";
-      } else {
-        slider.pause();
+    increaseSlider: (sliderValue, speed) => {
+      // value가 100 이상이면
+      if (sliderValue >= 100) {
+        slider.stop();
+        $("#play").disabled = true;
+        $("#faster").disabled = true;
       }
+      sliderValue += speed;
+      $("#slider").value = sliderValue;
+      // console.log(sliderValue);
+      document.querySelector("#play").innerHTML = "Pause";
+    },
+    play: (speed) => {
+      // pause 하고 play 눌렀을 때
+      if (slider.getInterval()) {
+        slider.pause();
+        return;
+      }
+      // 처음 play 눌렀을 때
+      const interval = setInterval(() => {
+        let sliderValue = Number.parseFloat($("#slider").value);
+        slider.increaseSlider(sliderValue, speed);
+        slider.setTime(sliderValue);
+        slider.setInterval(interval);
+      }, 100);
     },
     pause: () => {
-      clearInterval(slider.getInterval());
-      slider.setInterval();
+      slider.clearInterval();
       document.querySelector("#play").innerHTML = "Play";
     },
-
     stop: () => {
-      if (slider.getInterval()) {
-        clearInterval(slider.getInterval());
-        slider.setInterval();
-        // 초기화
-      }
-      // 100이면 0으로 reset
-      if (slider.getIsDone()) {
-        $("#slider").value = 0;
-        slider.setIsDone();
-      }
+      slider.pause();
+      $("#slider").value = 0;
+      $("#play").disabled = false;
+      $("#faster").disabled = false;
+    },
+    clearInterval: () => {
+      clearInterval(slider.getInterval());
+      slider.setInterval();
+    },
+    setTime: (sliderValue) => {
+      console.log(parseInt(sliderValue, 10));
+      $("#time").innerHTML = sliderValue;
     },
   };
 })();
@@ -60,16 +68,22 @@ const slider = (() => {
 // event
 const clickEvents = {
   play: () => {
-    slider.play();
+    slider.setSpeed(0);
+    slider.play(speed[0]);
   },
   stop: () => {
     slider.stop();
+    slider.setSpeed(0);
   },
   slider: () => {
     console.log($("#slider").value);
   },
   faster: () => {
-    let nowSpeed = 0;
+    let speedIdx = slider.getSpeed();
+    speedIdx = speedIdx + 1 > 3 ? 0 : speedIdx + 1;
+    slider.setSpeed(speedIdx);
+    slider.clearInterval();
+    slider.play(speed[speedIdx]);
   },
 };
 
