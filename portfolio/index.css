@@ -1,0 +1,12 @@
+div {
+  height: 10px;
+  background: #00d2ff;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#3a7bd5),
+    to(#00d2ff)
+  );
+  background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+}

@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Mission 1</title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <main class="App"></main>
+
+    <script>
+      const data = [
+        {
+          text: "JS 공부하기",
+          isCompleted: true,
+        },
+        {
+          text: "JS 복습하기",
+          isCompleted: false,
+        },
+        {
+          text: "TS 공부하기",
+          isCompleted: false,
+        },
+      ];
+
+      const isInstanceof = (context, constructor) => {
+        if (!(context instanceof constructor)) {
+          throw new Error("new 붙여 임마");
+        }
+      };
+
+      const isArray = (state) => {
+        if (!Array.isArray(state)) {
+          throw new Error("배열이 아님.");
+        }
+      };
+
+      function TodoList({ $target, initialState }) {
+        this.validate = () => {
+          isInstanceof(this, TodoList);
+          isArray(this.state);
+        };
+
+        this.state = initialState;
+        this.$target = document.createElement("ul");
+
+        this.validate();
+
+        $target.appendChild(this.$target);
+        this.render = () => {
+          this.$target.innerHTML = this.state
+            .map(
+              ({ text, isCompleted }) =>
+                `<li>${isCompleted ? `<s>${text}</s>` : text}</li>`
+            )
+            .join("");
+        };
+
+        this.setState = (nextState) => {
+          this.state = nextState;
+          this.validate();
+          this.render();
+        };
+
+        this.render();
+      }
+
+      try {
+        const $target = document.querySelector(".App");
+
+        const todoList = new TodoList({
+          $target,
+          initialState: [
+            {
+              text: "JS 공부하기",
+              isCompleted: true,
+            },
+            {
+              text: "JS 복습하기",
+              isCompleted: false,
+            },
+            {
+              text: "TS 공부하기",
+              isCompleted: false,
+            },
+          ],
+        });
+
+        todoList.setState([
+          {
+            text: "TS 공부하기",
+            isCompleted: true,
+          },
+          {
+            text: "TS 복습하기",
+            isCompleted: false,
+          },
+          {
+            text: "TS 공부하기",
+            isCompleted: false,
+          },
+        ]);
+
+        const todoList1 = new TodoList({
+          $target,
+          initialState: data,
+        });
+      } catch (e) {
+        alert(e.message);
+      }
+    </script>
+  </body>
+</html>
