@@ -7,5 +7,4 @@ prettier는 코드 구현 방식이 아닌 줄바꿈, 공백, 들여쓰기 등 �
 
 https://sunmon.github.io/vscode-eslint-prettier-setting/
 
-
 */
