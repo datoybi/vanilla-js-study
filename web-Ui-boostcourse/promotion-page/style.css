@@ -1,0 +1,50 @@
+ol {
+  list-style: none;
+}
+
+body,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  position: relative;
+  width: 1020px;
+  height: 650px;
+  margin: 0 auto;
+  background: url(bg_big3_evt.png) no-repeat 0 0;
+}
+
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+.link_point {
+  position: absolute;
+  left: 110px;
+  bottom: 110px;
+  width: 115px;
+  height: 20px;
+  background: red;
+  opacity: 0.5;
+}
+
+.link_join {
+  position: absolute;
+  left: 340px;
+  bottom: 7px;
+  width: 340px;
+  height: 70px;
+  opacity: 0.5;
+}

@@ -1,0 +1,35 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+.wrap {
+  height: 100%;
+  min-width: 800px;
+  text-align: center;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-color: lightgray;
+}
+.container {
+  min-height: 100%;
+  margin-top: -100px;
+  padding-top: 200px;
+  box-sizing: border-box;
+}
+.content {
+  margin: 0 auto;
+  height: 3200px;
+  max-width: 1200px;
+  background-color: lightpink;
+}
+
+.footer {
+  height: 100px;
+  background-color: lightcyan;
+}

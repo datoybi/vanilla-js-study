@@ -10,6 +10,8 @@
     />
     <title>Document</title>
     <style>
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.5/dist/web/static/pretendard.css");
+
       html,
       body {
         height: 100%;
@@ -21,13 +23,15 @@
       }
       .wrapper {
         width: 100%;
-        font-family: "Source Code Pro", monospace;
+        /* font-family: "Source Code Pro", monospace; */
+        font-family: "Pretendard";
+
         margin: 0 auto;
         height: 100%;
       }
       .wrapper h1 {
         transform: translate(-50%, -50%) skew(10deg);
-        font-size: 20vw;
+        font-size: 4vw;
         top: 50%;
         left: 50%;
         margin: 0;
@@ -41,7 +45,7 @@
       .wrapper h1:before {
         content: attr(data-heading);
         position: absolute;
-        left: 0.3%;
+        left: -6.7%;
         top: -4.8%;
         overflow: hidden;
         width: 100%;
@@ -69,7 +73,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <h1 contenteditable data-heading="dev.Blog">dev.Blog</h1>
+      <h1 data-heading="dev.Blog">dev.Blog</h1>
     </div>
     <script>
       // JS for content editable trick from Chris Coyier

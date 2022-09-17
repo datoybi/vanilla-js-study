@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  min-width: 500px;
+  max-width: 700px;
+  margin: 5px;
+}
+
+.menu {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.menu_item {
+  display: table-cell;
+}
+
+.menu_link {
+  display: block;
+  height: 36px;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  line-height: 36px;
+  color: #333;
+  text-align: center;
+}
+
+.menu_item:hover .menu_link {
+  font-weight: bold;
+  color: green;
+}
+
+.menu_item + .menu_item .menu_link {
+  margin-left: -1px;
+}
+
+.menu_item.active .menu_link {
+  position: relative;
+  border-color: #555;
+  font-weight: bold;
+  color: #fff;
+  background-color: gray;
+}

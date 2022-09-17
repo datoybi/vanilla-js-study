@@ -5,30 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style></style>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0 auto;
+        width: 500px;
+        scroll-behavior: smooth;
+      }
+      .contents {
+        height: 1000px;
+        border: 1px solid gray;
+      }
+    </style>
   </head>
   <body>
-    <div id="div1"></div>
-    <div id="div2"></div>
-		
-    <script>
-      const Test = () => {
-        let num = 0;
-
-        return {
-          setNum: (value) => {
-            num = value;
-          },
-          getNum: () => num,
-        };
-      };
-      const test1 = Test();
-      test1.setNum(100);
-      console.log(test1.getNum());
-
-      const test2 = Test();
-      test2.setNum(44444);
-      console.log(test2.getNum());
-    </script>
+    <div id="top">top</div>
+    <div class="contents"></div>
+    <img src="https://via.placeholder.com/300x200" />
+    <div class="contents"></div>
   </body>
 </html>
